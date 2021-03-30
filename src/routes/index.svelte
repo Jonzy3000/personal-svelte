@@ -1,5 +1,22 @@
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
+
+	export let currentSong;
+</script>
+
+<script lang="ts" context="module">
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async ({ page, fetch, session, context }) => {
+		   const res = await fetch('/current-song');
+
+		   if (res.ok) {
+			   return {
+				   props: {
+					   currentSong: await res.json()
+				   }
+			   }
+		   }
+	   }
 </script>
 
 <main class="flex flex-col items-center p-4">
@@ -8,6 +25,10 @@
 	<Counter />
 
 	<p class="my-8 mx-auto leading-5 max-w-xs sm:max-w-none">Visit <a class="text-red-500" href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+
+	<div>
+		Currently Playing: {currentSong.title} - {currentSong.artist}
+	</div>
 </main>
 
 <style>
