@@ -27,7 +27,12 @@
 	<p class="my-8 mx-auto leading-5 max-w-xs sm:max-w-none">Visit <a class="text-red-500" href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
 
 	<div>
-		Currently Playing: {currentSong.title} - {currentSong.artist}
+		{#if currentSong.isPlaying}
+			Currently Playing: {currentSong.title} - {currentSong.artist}
+		{:else}
+			Not currently jamming to any tunes
+		{/if}
+
 	</div>
 </main>
 
