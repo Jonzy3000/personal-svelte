@@ -1,47 +1,53 @@
-<script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+<script lang="ts" context="module">
+  import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ page, fetch, session, context }) => {
+    const res = await fetch('/current-song');
 
-	export let currentSong;
+    if (res.ok) {
+      return {
+        props: {
+          currentSong: await res.json(),
+        },
+      };
+    }
+  };
 </script>
 
-<script lang="ts" context="module">
-	import type { Load } from '@sveltejs/kit';
-	export const load: Load = async ({ page, fetch, session, context }) => {
-		   const res = await fetch('/current-song');
+<script lang="ts">
+  import Counter from '$lib/Counter.svelte';
 
-		   if (res.ok) {
-			   return {
-				   props: {
-					   currentSong: await res.json()
-				   }
-			   }
-		   }
-	   }
+  export let currentSong;
 </script>
 
 <main class="flex flex-col items-center p-4">
-	<h1 class="uppercase text-7xl my-16 mx-auto text-red-500 max-w-xs sm:max-w-none">Hello world!</h1>
+  <h1
+    class="uppercase text-7xl my-16 mx-auto text-red-500 max-w-xs sm:max-w-none"
+  >
+    Hello world!
+  </h1>
 
-	<Counter />
+  <Counter />
 
-	<p class="my-8 mx-auto leading-5 max-w-xs sm:max-w-none">Visit <a class="text-red-500" href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+  <p class="my-8 mx-auto leading-5 max-w-xs sm:max-w-none">
+    Visit <a class="text-red-500" href="https://svelte.dev">svelte.dev</a> to learn
+    how to build Svelte apps.
+  </p>
 
-	<div>
-		{#if currentSong.isPlaying}
-			Currently Playing: {currentSong.title} - {currentSong.artist}
-		{:else}
-			Not currently jamming to any tunes
-		{/if}
-
-	</div>
+  <div>
+    {#if currentSong.isPlaying}
+      Currently Playing: {currentSong.title} - {currentSong.artist}
+    {:else}
+      Not currently jamming to any tunes
+    {/if}
+  </div>
 </main>
 
 <style>
-	:root {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-			'Open Sans', 'Helvetica Neue', sans-serif;
-	}
-			/*
+  :root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  /*
 
 	main {
 		text-align: center;
