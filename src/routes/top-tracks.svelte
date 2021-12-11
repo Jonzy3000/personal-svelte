@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import type { Load } from '@sveltejs/kit';
   export const load: Load = async ({ fetch }) => {
-    const res = await fetch('/api/top-tracks');
+    const res = await fetch('/api/top-tracks', { credentials: 'omit' });
 
     if (res.ok) {
       return {
