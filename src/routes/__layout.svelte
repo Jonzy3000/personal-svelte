@@ -4,7 +4,6 @@
 
 <div class="flex flex-col items-center p-8 mx-auto max-w-lg w-full h-full">
   <slot />
-  <hr />
   <footer
     class="flex flex-col items-center mt-auto pt-4 text-gray-400 border-t w-full"
   >
