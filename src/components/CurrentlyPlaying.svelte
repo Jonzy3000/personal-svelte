@@ -22,13 +22,16 @@
   });
 </script>
 
-{#if currentSong.isPlaying}
-  <div class="flex">
-    <div class="h-6 w-6">
-      <SpotifyLogo width="100%" height="100%" />
-    </div>
-    {currentSong.title} - {currentSong.artist}
+<div class="flex text-lg">
+  <div class="h-7 w-7">
+    <SpotifyLogo width="100%" height="100%" />
   </div>
-{:else}
-  Not currently jamming to any tunes
-{/if}
+  {#if currentSong.isPlaying}
+    <p>
+      <span class="font-medium">{currentSong.title}</span>{' - '}
+      <span class="text-stone-600">{currentSong.artist}</span>
+    </p>
+  {:else}
+    Not currently jamming to any tunes
+  {/if}
+</div>
