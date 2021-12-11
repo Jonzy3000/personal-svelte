@@ -18,6 +18,10 @@
   export let currentSong;
 </script>
 
+<svelte:head>
+  <title>Matt Jones</title>
+</svelte:head>
+
 <main class="flex flex-col items-center p-8 mx-auto max-w-lg">
   <p class="text-4xl my-16 max-w-xs">
     A full stack developer from, you gussed it, <span
