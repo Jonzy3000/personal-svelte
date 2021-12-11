@@ -14,24 +14,25 @@
 </script>
 
 <script lang="ts">
-  import Counter from '$lib/Counter.svelte';
-
+  import SpotifyLogo from '$resources/spotify-logo.svg';
   export let currentSong;
 </script>
 
-<main class="p-4 mx-auto max-w-xs sm:max-w-none">
-  <h1 class="uppercase text-7xl my-16 text-red-500 ">Hello world!</h1>
-
-  <Counter />
-
-  <p class="my-8 leading-5">
-    Visit <a class="text-red-500" href="https://svelte.dev">svelte.dev</a> to learn
-    how to build Svelte apps.
+<main class="flex flex-col items-center p-8 mx-auto max-w-lg">
+  <p class="text-4xl my-16 max-w-xs">
+    A full stack developer from, you gussed it, <span
+      class="underline text-red-600">Wales.</span
+    >
   </p>
 
   <div>
     {#if currentSong.isPlaying}
-      Currently Playing: {currentSong.title} - {currentSong.artist}
+      <div class="flex">
+        <div class="h-6 w-6">
+          <SpotifyLogo width="100%" height="100%" />
+        </div>
+        {currentSong.title} - {currentSong.artist}
+      </div>
     {:else}
       Not currently jamming to any tunes
     {/if}

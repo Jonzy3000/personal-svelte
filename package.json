@@ -12,6 +12,7 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@poppanator/sveltekit-svg": "^0.2.2",
     "@sveltejs/adapter-netlify": "next",
     "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",

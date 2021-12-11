@@ -1,5 +1,7 @@
 import adapter from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
+import svelteSVG from '@poppanator/sveltekit-svg';
+import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -18,6 +20,18 @@ const config = {
 
     // hydrate the <div id="svelte"> element in src/app.html
     target: '#svelte',
+    vite: {
+      resolve: {
+        alias: {
+          $resources: path.resolve('./src/resources'),
+        },
+      },
+      plugins: [
+        svelteSVG({
+          svgoConfig: {}, // See https://github.com/svg/svgo#configuration
+        }),
+      ],
+    },
   },
 };
 
