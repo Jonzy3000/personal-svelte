@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import type { Load } from '@sveltejs/kit';
   export const load: Load = async ({ fetch }) => {
-    const res = await fetch('/current-song');
+    const res = await fetch('/api/current-song');
 
     if (res.ok) {
       return {
@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import SpotifyLogo from '$resources/spotify-logo.svg';
+  import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
   export let currentSong;
 </script>
 
@@ -26,15 +26,6 @@
   </p>
 
   <div>
-    {#if currentSong.isPlaying}
-      <div class="flex">
-        <div class="h-6 w-6">
-          <SpotifyLogo width="100%" height="100%" />
-        </div>
-        {currentSong.title} - {currentSong.artist}
-      </div>
-    {:else}
-      Not currently jamming to any tunes
-    {/if}
+    <CurrentlyPlaying {currentSong} />
   </div>
 </main>

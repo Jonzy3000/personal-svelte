@@ -24,6 +24,7 @@ const config = {
       resolve: {
         alias: {
           $resources: path.resolve('./src/resources'),
+          $components: path.resolve('./src/components'),
         },
       },
       plugins: [
