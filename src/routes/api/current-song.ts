@@ -1,5 +1,4 @@
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
-import type { Response } from '@sveltejs/kit';
 
 export const get = async () => {
   const api = await getAuthenticatedSpotifyApi();
