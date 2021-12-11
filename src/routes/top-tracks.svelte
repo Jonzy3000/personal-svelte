@@ -8,6 +8,7 @@
         props: {
           topTracks: (await res.json()).items,
         },
+        maxage: 60 * 60,
       };
     }
   };

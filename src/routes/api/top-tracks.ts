@@ -6,7 +6,7 @@ export const get = async () => {
   return {
     body: response.body,
     headers: {
-      'Cache-Control': `max-age=${60 * 60 * 24}`, // one day
+      'Cache-Control': `max-age-0, s-max-age=${60 * 60 * 24}`, // one day
     },
   };
 };
