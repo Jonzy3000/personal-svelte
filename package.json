@@ -14,7 +14,6 @@
   "devDependencies": {
     "@poppanator/sveltekit-svg": "^0.2.2",
     "@sveltejs/adapter-netlify": "next",
-    "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
     "@tailwindcss/line-clamp": "^0.3.0",
     "@types/spotify-web-api-node": "^5.0.4",
