@@ -10,10 +10,10 @@ const basic = btoa(`${client_id}:${client_secret}`)
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const spotifyApi = new SpotifyWebApi();
 
-let cached = global['spotify'];
+let cached = globalThis['spotify'];
 
 if (!cached) {
-  cached = global['spotify'] = {
+  cached = globalThis['spotify'] = {
     access_token: null,
     token_type: null,
     expires_in: null,
