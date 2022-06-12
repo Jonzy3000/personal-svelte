@@ -6,7 +6,7 @@ const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
 const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string;
 const refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN as string;
 
-const basic = btoa(`${client_id}:${client_secret}`)
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const spotifyApi = new SpotifyWebApi();
 
