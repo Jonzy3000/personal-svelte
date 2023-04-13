@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import querystring from 'querystring';
 import SpotifyWebApi from 'spotify-web-api-node';
 

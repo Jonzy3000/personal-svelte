@@ -1,19 +1,15 @@
 <script lang="ts">
+  import { invalidateAll } from '$app/navigation';
   import SpotifyLogo from '$resources/spotify-logo.svg';
   import { onDestroy, onMount } from 'svelte';
   export let currentSong;
   let songInterval;
 
-  const fetchCurrentSong = async () => {
-    const res = await fetch('/api/current-song');
-    if (res.ok) {
-      currentSong = await res.json();
-    }
-  };
-
   onMount(async () => {
     songInterval = setInterval(() => {
-      fetchCurrentSong();
+      // Super hacky, but will call the load function again of this page to get updated song
+      // Other option would be to use a +server.js for current-song
+      invalidateAll();
     }, 5000);
   });
 

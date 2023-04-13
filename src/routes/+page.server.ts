@@ -1,11 +1,12 @@
+import type { PageServerLoad } from './$types';
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
 
-export const get = async () => {
+export const load: PageServerLoad = async () => {
   const api = await getAuthenticatedSpotifyApi();
   const response = await api.getMyCurrentPlayingTrack();
 
   if (response.statusCode === 204 || response.statusCode > 400) {
-    return { body: { isPlaying: false } };
+    return { isPlaying: false };
   }
 
   const song = response.body;
@@ -18,13 +19,11 @@ export const get = async () => {
   const songUrl = item.external_urls.spotify;
 
   return {
-    body: {
-      album,
-      albumImageUrl,
-      artist,
-      isPlaying,
-      songUrl,
-      title,
-    },
+    album,
+    albumImageUrl,
+    artist,
+    isPlaying,
+    songUrl,
+    title,
   };
 };

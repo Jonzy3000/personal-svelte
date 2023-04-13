@@ -1,6 +1,5 @@
 import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
-import svelteSVG from '@poppanator/sveltekit-svg';
 import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -13,19 +12,10 @@ const config = {
     }),
   ],
   kit: {
-    adapter: adapter({ edge: true }),
-    vite: {
-      resolve: {
-        alias: {
-          $resources: path.resolve('./src/resources'),
-          $components: path.resolve('./src/components'),
-        },
-      },
-      plugins: [
-        svelteSVG({
-          svgoConfig: {}, // See https://github.com/svg/svgo#configuration
-        }),
-      ],
+    adapter: adapter({ runtime: 'edge' }),
+    alias: {
+      $resources: path.resolve('./src/resources'),
+      $components: path.resolve('./src/components'),
     },
   },
 };

@@ -6,4 +6,4 @@ node_modules
 /functions
 .env
 /.netlify
-
+/.vercel

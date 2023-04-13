@@ -1,22 +1,7 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit';
-  export const load: Load = async ({ fetch }) => {
-    const res = await fetch('/api/top-tracks', { credentials: 'omit' });
-
-    if (res.ok) {
-      return {
-        props: {
-          topTracks: (await res.json()).items,
-        },
-        cache: { maxage: 60 * 60 },
-      };
-    }
-  };
-</script>
-
 <script lang="ts">
   import SpotifyLogo from '$resources/spotify-logo.svg';
-  export let topTracks;
+  import type { PageData } from './$types';
+  export let data: PageData;
 </script>
 
 <h1 class="text-4xl mb-16 flex">
@@ -26,7 +11,7 @@
   Top Tracks
 </h1>
 
-{#each topTracks as track}
+{#each data.topTracks as track}
   <div
     class="flex flex-row w-full items-center shadow h-24 shadow-stone-300 rounded p-2 mb-8"
   >

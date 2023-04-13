@@ -4,7 +4,8 @@
 
 @layer base {
   html,
-  body, #svelte {
+  body,
+  #svelte {
     width: 100%;
     height: 100%;
   }
