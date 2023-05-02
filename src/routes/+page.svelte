@@ -8,7 +8,7 @@
   <title>Matt Jones</title>
 </svelte:head>
 
-<p class="text-4xl mb-16 max-w-xs">
+<p class="text-4xl mb-16">
   A full stack developer from, you gussed it, <span
     class="underline text-red-600">Wales.</span
   >

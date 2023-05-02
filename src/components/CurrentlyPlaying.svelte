@@ -3,7 +3,7 @@
   import SpotifyLogo from '$resources/spotify-logo.svg';
   import { onDestroy, onMount } from 'svelte';
   export let currentSong;
-  let songInterval;
+  let songInterval: number;
 
   onMount(async () => {
     songInterval = setInterval(() => {
@@ -24,7 +24,14 @@
   </div>
   {#if currentSong.isPlaying}
     <p>
-      <span class="font-medium">{currentSong.title}</span>{' - '}
+      <a
+        href={currentSong.songUrl}
+        target="_blank"
+        class="font-medium hover:underline"
+      >
+        {currentSong.title}
+      </a>
+      {' - '}
       <span class="text-stone-600">{currentSong.artist}</span>
     </p>
   {:else}
