@@ -16,5 +16,6 @@
       target="_blank"
       href="https://www.linkedin.com/in/matt-jones123/">LinkedIn</a
     >
+    <a class="hover:underline" target="_blank" href="/mattjones-cv.pdf">CV</a>
   </div>
 </nav>
