@@ -10,7 +10,7 @@
       // Super hacky, but will call the load function again of this page to get updated song
       // Other option would be to use a +server.js for current-song
       invalidateAll();
-    }, 5000);
+    }, 30000);
   });
 
   onDestroy(() => {
