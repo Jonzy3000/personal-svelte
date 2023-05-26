@@ -4,16 +4,16 @@
   export let data: PageData;
 </script>
 
-<h1 class="text-4xl flex justify-center mb-2">
-  <div class="h-11 w-11">
+<h1 class="text-4xl items-center justify-center flex mb-4">
+  <div class="h-12 w-12">
     <SpotifyLogo width="100%" height="100%" />
   </div>
   Top Tracks
 </h1>
 
-<div class="grid gap-y-6">
+<div class="grid -mx-16">
   {#each data.topTracks as track}
-    <div class="flex flex-row w-full items-center h-18 rounded p-2">
+    <div class="flex px-16 py-4 flex-row w-full items-center h-18">
       <div class="h-16 w-16 mr-6 aspect-square">
         <img
           class="object-fit rounded-full w-full h-full"

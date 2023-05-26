@@ -8,9 +8,13 @@
   inject({ mode: dev ? 'development' : 'production' });
 </script>
 
+<svelte:head>
+  <title>Matt Jones</title>
+</svelte:head>
+
 <div
   data-sveltekit-preload-data
-  class="flex flex-col mx-auto max-w-lg w-full h-full px-4"
+  class="flex flex-col mx-auto max-w-xl w-full min-h-screen px-16 border-x border-black"
 >
   <Nav />
   <main class="flex flex-col w-full">

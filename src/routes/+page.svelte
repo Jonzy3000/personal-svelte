@@ -4,16 +4,14 @@
   export let data: PageData;
 </script>
 
-<svelte:head>
-  <title>Matt Jones</title>
-</svelte:head>
+<section class="prose">
+  <p class="text-4xl mb-16">
+    A full stack developer from, you gussed it, <span
+      class="underline text-red-600">Wales.</span
+    >
+  </p>
 
-<p class="text-4xl mb-16">
-  A full stack developer from, you gussed it, <span
-    class="underline text-red-600">Wales.</span
-  >
-</p>
-
-<div>
-  <CurrentlyPlaying currentSong={data} />
-</div>
+  <div>
+    <CurrentlyPlaying currentSong={data} />
+  </div>
+</section>
