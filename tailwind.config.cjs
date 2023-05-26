@@ -4,7 +4,7 @@ const config = {
     extend: {},
     fontFamily: { body: ['Serif roman', 'sans-serif'] },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [require('@tailwindcss/typography')],
 };
 
 module.exports = config;
