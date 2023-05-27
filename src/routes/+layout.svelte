@@ -14,7 +14,7 @@
 
 <div
   data-sveltekit-preload-data
-  class="flex flex-col mx-auto max-w-xl w-full min-h-screen border-black px-4 sm:px-16 sm:border-x"
+  class="flex flex-col mx-auto w-full min-h-screen border-black px-4 sm:max-w-xl sm:px-16 sm:border-x"
 >
   <Nav />
   <main class="flex flex-col flex-1 w-full">
