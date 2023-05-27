@@ -54,5 +54,5 @@ export async function getAuthenticatedSpotifyApi(): Promise<SpotifyWebApi> {
 }
 
 function hasTokenExpired() {
-  return cached.time_created + cached.expires_in * 1000 < Date.now() - 10000;
+  return cached.time_created + cached.expires_in * 1000 < Date.now() + 10000;
 }
