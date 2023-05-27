@@ -4,7 +4,7 @@
   export let data: PageData;
 </script>
 
-<section class="prose">
+<section class="prose mb-4">
   <h1 class="items-center justify-center flex">
     <div class="h-12 w-12">
       <SpotifyLogo width="100%" height="100%" />
@@ -21,9 +21,9 @@
   </p>
 </section>
 
-<div class="grid -mx-16">
+<div class="grid">
   {#each data.topTracks as track}
-    <div class="flex px-16 py-4 flex-row w-full items-center h-18">
+    <div class="flex py-4 flex-row w-full items-center h-18">
       <div class="h-16 w-16 mr-6 aspect-square">
         <img
           class="object-fit rounded-full w-full h-full"
