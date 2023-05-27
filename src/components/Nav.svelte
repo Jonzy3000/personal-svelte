@@ -1,5 +1,5 @@
 <nav
-  class="flex flex-row justify-between space-x-4 mt-4 mb-4 -mx-16 px-16 pb-4 uppercase text-sm border-b border-black"
+  class="flex flex-row justify-between space-x-4 mt-4 mb-4 -mx-4 px-4 sm:-mx-16 sm:px-16 pb-4 uppercase text-sm border-b border-black"
 >
   <div class="space-x-4">
     <a class="hover:underline" href="/">Home</a>
