@@ -12,7 +12,7 @@
     Top Tracks
   </h1>
   <p>
-    Here's what I've been listening to lately, more info <a
+    Here's what I've been listening to over the past month or so, more info <a
       href="https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks"
       target="_blank"
     >
