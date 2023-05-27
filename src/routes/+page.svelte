@@ -27,7 +27,10 @@
       - A tool to create a spotify playlist from a few songs, using their recommendation
       api
     </li>
-    <li>Link shortener</li>
+    <li>
+      <a href="https://s.mattjones.wales/" target="_blank">Link shortener</a> - A
+      very simple link shortener built with svelte kit
+    </li>
     <li>
       <a href="https://fairrent-production.up.railway.app/" target="_blank"
         >Fair rent</a
