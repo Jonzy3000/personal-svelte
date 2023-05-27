@@ -2,13 +2,14 @@
   import type { PageData } from './$types';
   import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
   import me from '$lib/assets/me.webp';
-  import { onMount } from 'svelte';
   import c from 'classnames';
+  import { spring } from 'svelte/motion';
 
   export let data: PageData;
   let eye1: HTMLDivElement;
   let eye2: HTMLDivElement;
   let eyesHidden = true;
+  let rot = spring(0, { stiffness: 0.05, damping: 0.7 });
 </script>
 
 <!-- Shamefully copied from https://github.com/pocketbase/site/blob/2dd22ee2365c8dac325f7bbe7e825d6c0345c909/src/routes/(blank)/%2Bpage.svelte#L273 -->
@@ -21,11 +22,8 @@
       const leftX = leftRect.left + window.scrollX + leftRect.width / 2;
       const leftY = leftRect.top + window.scrollY + leftRect.height / 2;
       const rad = Math.atan2(e.pageX - leftX, e.pageY - leftY);
-      const rot = rad * (180 / Math.PI) * -1 + 180;
-
-      [eye1, eye2].forEach((eye) => {
-        eye.style.transform = `rotate(${rot}deg)`;
-      });
+      const rotation = rad * (180 / Math.PI) * -1 + 180;
+      rot.set(rotation);
     }
   }}
 />
@@ -41,10 +39,12 @@
     <div
       class={c({ invisible: eyesHidden }, 'eye top-[74px] left-[24px]')}
       bind:this={eye1}
+      style={'transform:' + `rotate(${$rot}deg)`}
     />
     <div
       class={c({ invisible: eyesHidden }, 'eye top-[74px] left-[32px]')}
       bind:this={eye2}
+      style={'transform:' + `rotate(${$rot}deg)`}
     />
     <button on:click={() => (eyesHidden = !eyesHidden)}>
       <img
@@ -100,15 +100,15 @@
     border-radius: 50%;
     height: 20px;
     width: 20px;
-    background: #ffff;
+    background: rgba(255, 255, 255, 0.2);
   }
   .eye:after {
     /*pupil*/
     position: absolute;
     bottom: 12px;
     right: 5px;
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     background: #000;
     border-radius: 50%;
     content: ' ';
