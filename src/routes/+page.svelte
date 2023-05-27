@@ -77,7 +77,7 @@
       <a href="https://fairrent-production.up.railway.app/" target="_blank"
         >Fair rent</a
       >
-      - A tool to calculate a fair rent price for a house, inspired by
+      - A tool to calculate a fair rent price between house mates, inspired by
       <a href="https://www.npr.org/transcripts/688849249" target="_blank"
         >this</a
       > episode of planet money
