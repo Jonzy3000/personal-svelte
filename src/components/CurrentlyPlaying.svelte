@@ -18,7 +18,7 @@
   });
 </script>
 
-<div class="flex">
+<div class="flex items-center">
   <div class="h-7 w-7">
     <SpotifyLogo width="100%" height="100%" />
   </div>
