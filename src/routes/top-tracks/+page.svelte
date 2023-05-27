@@ -4,12 +4,22 @@
   export let data: PageData;
 </script>
 
-<h1 class="text-4xl items-center justify-center flex mb-4">
-  <div class="h-12 w-12">
-    <SpotifyLogo width="100%" height="100%" />
-  </div>
-  Top Tracks
-</h1>
+<section class="prose">
+  <h1 class="items-center justify-center flex">
+    <div class="h-12 w-12">
+      <SpotifyLogo width="100%" height="100%" />
+    </div>
+    Top Tracks
+  </h1>
+  <p>
+    Here's what I've been listening to lately, more info <a
+      href="https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks"
+      target="_blank"
+    >
+      here.
+    </a>
+  </p>
+</section>
 
 <div class="grid -mx-16">
   {#each data.topTracks as track}

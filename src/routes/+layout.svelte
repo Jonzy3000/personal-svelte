@@ -14,10 +14,10 @@
 
 <div
   data-sveltekit-preload-data
-  class="flex flex-col mx-auto max-w-xl w-full min-h-screen px-16 border-x border-black"
+  class="flex flex-col mx-auto max-w-xl w-full min-h-screen border-black px-4 sm:px-16 sm:border-x"
 >
   <Nav />
-  <main class="flex flex-col w-full">
+  <main class="flex flex-col flex-1 w-full">
     <slot />
   </main>
   <Footer />
