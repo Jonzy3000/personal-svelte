@@ -1,5 +1,5 @@
 import querystring from 'querystring';
-import SpotifyWebApi from 'spotify-web-api-node';
+import { spotifyApiClient, type SpotifyApiClient } from '@ekwoka/spotify-api';
 
 const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID as string;
 const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET as string;
@@ -7,7 +7,6 @@ const refresh_token = import.meta.env.VITE_SPOTIFY_REFRESH_TOKEN as string;
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-const spotifyApi = new SpotifyWebApi();
 
 let cached = global['spotify'];
 
@@ -47,10 +46,9 @@ const getAccessToken = async () => {
   });
 };
 
-export async function getAuthenticatedSpotifyApi(): Promise<SpotifyWebApi> {
+export async function getAuthenticatedSpotifyApi(): Promise<SpotifyApiClient> {
   const { access_token } = await getAccessToken();
-  spotifyApi.setAccessToken(access_token);
-  return spotifyApi;
+  return spotifyApiClient(access_token);
 }
 
 function hasTokenExpired() {

@@ -8,7 +8,7 @@ const config: UserConfig = {
   },
   plugins: [sveltekit(), svelteSVG()],
   ssr: {
-    noExternal: ['svelte-hero-icons', 'flowbite-svelte'],
+    noExternal: ['svelte-hero-icons', 'flowbite-svelte', '@ekwoka/spotify-api'],
   },
 };
 

@@ -1,10 +1,14 @@
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
+import type { TrackWithAlbum } from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import type { PageServerLoad } from '../$types';
+import { getTopItems } from '@ekwoka/spotify-api';
 
 export const load: PageServerLoad = async () => {
   const api = await getAuthenticatedSpotifyApi();
-  const response = await api.getMyTopTracks({ time_range: 'short_term' });
-  return { topTracks: response.body?.items };
+  const response = await api(
+    getTopItems('tracks', { time_range: 'medium_term' })
+  );
+  return { topTracks: response?.items as unknown as TrackWithAlbum[] };
 };
 
 /**
