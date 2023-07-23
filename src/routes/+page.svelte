@@ -2,9 +2,17 @@
   import type { PageData } from './$types';
   import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
   import me from '$lib/assets/me.webp';
+  import { Head } from 'svead';
+  import { page } from '$app/stores';
 
   export let data: PageData;
 </script>
+
+<Head
+  title="Matt Jones | Home"
+  url={$page.url.href}
+  description="A full stack developer from wales"
+/>
 
 <section>
   <div class="w-screen border-b-2 border-black pt-8 bg-yellow-300">

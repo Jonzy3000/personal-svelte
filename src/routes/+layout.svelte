@@ -8,10 +8,6 @@
   inject({ mode: dev ? 'development' : 'production' });
 </script>
 
-<svelte:head>
-  <title>Matt Jones</title>
-</svelte:head>
-
 <div data-sveltekit-preload-data class="min-h-screen">
   <Nav />
   <main class="w-full mx-auto">

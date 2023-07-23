@@ -1,8 +1,16 @@
 <script lang="ts">
   import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
+  import { Head } from 'svead';
   import type { PageData } from './$types';
+  import { page } from '$app/stores';
   export let data: PageData;
 </script>
+
+<Head
+  title="Matt Jones | Top Tracks"
+  url={$page.url.href}
+  description="Matt Jones' most listened to tracks"
+/>
 
 <section class="w-full py-8 bg-[#00e3ff]">
   <div class=" container prose prose-lgr">
