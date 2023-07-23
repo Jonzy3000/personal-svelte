@@ -13,7 +13,7 @@
 />
 
 <section class="w-full py-8 bg-[#00e3ff]">
-  <div class=" container prose prose-lgr">
+  <div class=" container prose prose-lg">
     <h1 class="items-center justify-center flex mb-4">
       <div class="h-12 w-12">
         <SpotifyLogo />
