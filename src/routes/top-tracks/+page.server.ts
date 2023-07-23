@@ -1,6 +1,7 @@
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
 import type { PageServerLoad } from '../$types';
 import { getTopItems } from '@ekwoka/spotify-api';
+import { dev } from '$app/environment';
 
 export const load: PageServerLoad = async () => {
   const api = await getAuthenticatedSpotifyApi();
@@ -13,4 +14,4 @@ export const load: PageServerLoad = async () => {
 /**
  * Static content that gets recalculated every 12 hours (ish)
  */
-export const csr = false;
+export const csr = dev || false;

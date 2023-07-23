@@ -2,115 +2,91 @@
   import type { PageData } from './$types';
   import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
   import me from '$lib/assets/me.webp';
-  import c from 'classnames';
-  import { spring } from 'svelte/motion';
 
   export let data: PageData;
-  let eye1: HTMLDivElement;
-  let eye2: HTMLDivElement;
-  let eyesHidden = true;
-  let rot = spring(0, { stiffness: 0.05, damping: 0.7 });
 </script>
 
-<!-- Shamefully copied from https://github.com/pocketbase/site/blob/2dd22ee2365c8dac325f7bbe7e825d6c0345c909/src/routes/(blank)/%2Bpage.svelte#L273 -->
-<svelte:window
-  on:mousemove={(e) => {
-    if (eye1 && !eyesHidden) {
-      const leftRect = eye1.getBoundingClientRect();
+<section>
+  <div class="w-screen border-b-2 border-black pt-8 bg-yellow-300">
+    <div class="container">
+      <div class="prose prose-xl">
+        <h1 class="w-full mb-16">
+          A full stack developer who likes to tinker with things
+        </h1>
 
-      // calc the radius of one of the eye (they are the same size)
-      const leftX = leftRect.left + window.scrollX + leftRect.width / 2;
-      const leftY = leftRect.top + window.scrollY + leftRect.height / 2;
-      const rad = Math.atan2(e.pageX - leftX, e.pageY - leftY);
-      const rotation = rad * (180 / Math.PI) * -1 + 180;
-      rot.set(rotation);
-    }
-  }}
-/>
-
-<section class="prose mb-8">
-  <h1 class="mb-4">A full stack developer who likes to tinker with things</h1>
-
-  <!-- 
-    These eye divs are causing weird layout shifts
-    Hence the weird negative margins
-  -->
-  <div class="-mt-16 -mb-10 mx-auto w-24">
-    <div
-      class={c({ invisible: eyesHidden }, 'eye top-[74px] left-[24px]')}
-      bind:this={eye1}
-      style={'transform:' + `rotate(${$rot}deg)`}
-    />
-    <div
-      class={c({ invisible: eyesHidden }, 'eye top-[74px] left-[32px]')}
-      bind:this={eye2}
-      style={'transform:' + `rotate(${$rot}deg)`}
-    />
-    <button on:click={() => (eyesHidden = !eyesHidden)}>
-      <img
-        alt="Matt Jones looking great"
-        class="w-24 h-24 rounded-full object-cover"
-        src={me}
-      />
-    </button>
+        <div
+          class="mx-auto left-0 right-0 w-24 -translate-y-[50%] not-prose absolute"
+        >
+          <img
+            alt="Matt Jones looking great"
+            class="w-24 h-24 border-black border-2 shadow-[5px_0px_black] rounded-full object-cover"
+            src={me}
+          />
+        </div>
+      </div>
+    </div>
   </div>
-  <p>
-    Here's some things I've tinkered with in the past, there's a good chance
-    they are now broken. Most of these projects have come from either wanting to
-    try out new tech, or trying to make my life easier.
-  </p>
-  <ul>
-    <li>
-      <a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> - A tool
-      to import online recipes into one place
-    </li>
-    <li>
-      <a href="https://parrrot.netlify.app" target="_blank">Parrrot</a>
-      - A tool to create a spotify playlist from a few songs, using their recommendation
-      api
-    </li>
-    <li>
-      <a href="https://s.mattjones.wales/" target="_blank">Link shortener</a> - A
-      very simple link shortener built with svelte kit
-    </li>
-    <li>
-      <a href="https://fairrent-production.up.railway.app/" target="_blank"
-        >Fair rent</a
-      >
-      - A tool to calculate a fair rent price between house mates, inspired by
-      <a href="https://www.npr.org/transcripts/688849249" target="_blank"
-        >this</a
-      > episode of planet money
-    </li>
-    <li>
-      <a href="https://wengersdoc.com/" target="_blank"> WengersDoc</a> - Website
-      for a friends podcast
-    </li>
-  </ul>
 </section>
 
-<div class="flex justify-center w-full mt-auto mb-4">
-  <CurrentlyPlaying currentSong={data} />
-</div>
+<section class="w-screen bg-white border-b-2 border-black">
+  <div class=" pt-16 px-8 py-2 container">
+    <p class="prose-xl">
+      Here's some things I've tinkered with in the past, there's a good chance
+      they are now broken. Most of these projects have come from either wanting
+      to try out new tech, or trying to make my life easier.
+    </p>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+      <li class="border-2 border-black p-4 rounded-xl list-none">
+        <a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool
+        to import online recipes into one place
+      </li>
+      <li>
+        <a href="https://dalanobarnes.com/" target="_blank">
+          dalanobarnes.com
+        </a>
+        Dalano Barne's personal website. A port from a previous wordpress site.
+      </li>
+      <li>
+        <a href="https://parrrot.netlify.app" target="_blank">Parrrot</a>
+        A tool to create a spotify playlist from a few songs, using their recommendation
+        api
+      </li>
+
+      <li>
+        <a href="https://fairrent-production.up.railway.app/" target="_blank">
+          Fair rent
+        </a>
+        <p>
+          A tool to calculate a fair rent price between house mates, inspired by
+          <a href="https://www.npr.org/transcripts/688849249" target="_blank">
+            this
+          </a> episode of planet money
+        </p>
+      </li>
+      <li>
+        <a href="https://s.mattjones.wales/" target="_blank">Link shortener</a>
+        A very simple link shortener built with svelte kit
+      </li>
+      <li>
+        <a href="https://wengersdoc.com/" target="_blank"> WengersDoc </a>
+        Website for a friends podcast
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="w-screen bg-[#ff66ad] py-8 px-4">
+  <div class="flex justify-center container w-full">
+    <CurrentlyPlaying currentSong={data} />
+  </div>
+</section>
 
 <style>
-  .eye {
-    position: relative;
-    display: inline-block;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    background: rgba(255, 255, 255, 0.2);
+  li {
+    @apply border-2 border-black p-4 rounded-xl list-none flex flex-col text-lg md:min-h-[150px];
   }
-  .eye:after {
-    /*pupil*/
-    position: absolute;
-    bottom: 12px;
-    right: 5px;
-    width: 6px;
-    height: 6px;
-    background: #000;
-    border-radius: 50%;
-    content: ' ';
+
+  li > a:first-child {
+    @apply font-bold underline uppercase text-lg;
   }
 </style>

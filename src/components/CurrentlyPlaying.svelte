@@ -1,8 +1,13 @@
 <script lang="ts">
   import { invalidateAll } from '$app/navigation';
-  import SpotifyLogo from '$resources/spotify-logo.svg';
+  import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
   import { onDestroy, onMount } from 'svelte';
-  export let currentSong;
+  export let currentSong: {
+    title?: string | undefined;
+    isPlaying: boolean;
+    songUrl?: string | undefined;
+    artist?: string | undefined;
+  };
   let songInterval: number;
 
   onMount(async () => {
@@ -18,9 +23,11 @@
   });
 </script>
 
-<div class="flex items-center">
-  <div class="h-7 w-7">
-    <SpotifyLogo width="100%" height="100%" />
+<div
+  class="flex items-center bg-white p-4 border-2 border-black rounded w-full sm:w-auto"
+>
+  <div class="h-7 w-7 flex justify-center items-center mr-1">
+    <SpotifyLogo />
   </div>
   {#if currentSong.isPlaying}
     <p>

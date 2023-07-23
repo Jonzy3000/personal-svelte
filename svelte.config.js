@@ -14,7 +14,6 @@ const config = {
   kit: {
     adapter: adapter({ runtime: 'edge' }),
     alias: {
-      $resources: path.resolve('./src/resources'),
       $components: path.resolve('./src/components'),
     },
   },
