@@ -44,7 +44,7 @@
         <a href="https://dalanobarnes.com/" target="_blank">
           dalanobarnes.com
         </a>
-        Dalano Barne's personal website. A port from a previous wordpress site.
+        Dalano Barnes' personal website. A port from a previous wordpress site.
       </li>
       <li>
         <a href="https://parrrot.netlify.app" target="_blank">Parrrot</a>
