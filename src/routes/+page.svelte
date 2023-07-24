@@ -66,7 +66,11 @@
         </a>
         <p>
           A tool to calculate a fair rent price between house mates, inspired by
-          <a href="https://www.npr.org/transcripts/688849249" target="_blank">
+          <a
+            href="https://www.npr.org/transcripts/688849249"
+            target="_blank"
+            aria-label="Planet money podcast epsiode about the division problem"
+          >
             this
           </a> episode of planet money
         </p>
