@@ -44,7 +44,6 @@
     "node": ">= 12.17.0"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
     "classnames": "^2.3.2",
     "lucide-svelte": "^0.257.0",
     "svead": "^0.0.4"
