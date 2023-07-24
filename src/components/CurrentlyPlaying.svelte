@@ -11,17 +11,32 @@
   let songInterval: number;
 
   onMount(async () => {
+    setupInterval();
+  });
+
+  const setupInterval = () => {
     songInterval = setInterval(() => {
       // Super hacky, but will call the load function again of this page to get updated song
       // Other option would be to use a +server.js for current-song
       invalidateAll();
     }, 10000);
-  });
+  };
 
   onDestroy(() => {
     clearInterval(songInterval);
   });
+
+  const handleVisiblityChange = () => {
+    if (document.hidden) {
+      clearInterval(songInterval);
+    } else {
+      invalidateAll();
+      setupInterval();
+    }
+  };
 </script>
+
+<svelte:document on:visibilitychange={handleVisiblityChange} />
 
 <div
   class="flex items-center bg-white p-4 border-2 border-black rounded w-full sm:w-auto"
