@@ -15,6 +15,7 @@
         class="hover:underline border-2 border-black rounded p-1 bg-pink-100 shadow-[0px_2px_black] hover:shadow-[1px_-2px_black] transition-shadow"
         target="_blank"
         href="https://github.com/Jonzy3000/personal-svelte"
+        aria-label="Matt Jones' github"
       >
         <Github strokeWidth="1" size="24" />
       </a>
@@ -22,6 +23,7 @@
         class="hover:underline border-2 border-black rounded p-1 bg-blue-100 shadow-[0px_2px_black] hover:shadow-[1px_-2px_black] transition-shadow"
         target="_blank"
         href="https://www.linkedin.com/in/matt-jones123/"
+        aria-label="Matt Jones' linkedin"
       >
         <Linkedin strokeWidth="1" size="24" />
       </a>
