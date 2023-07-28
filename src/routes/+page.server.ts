@@ -1,31 +1,38 @@
 import type { PageServerLoad } from './$types';
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
-import { currentlyPlayingTrack } from '@ekwoka/spotify-api';
+import {
+  currentlyPlayingTrack,
+  recentlyPlayedTracks,
+} from '@ekwoka/spotify-api';
 
 export const load: PageServerLoad = async () => {
   const api = await getAuthenticatedSpotifyApi();
 
   try {
-    const response = await api(currentlyPlayingTrack());
+    const [currentlyListening, lastPlayedTracks] = await Promise.all([
+      api(currentlyPlayingTrack()),
+      api(recentlyPlayedTracks({ limit: 1 })),
+    ]);
 
-    const song = response;
-    const item = song.item as SpotifyApi.TrackObjectFull;
-    const isPlaying = song.is_playing;
-    const title = song.item?.name;
-    const artist = item.artists.map((_artist) => _artist.name).join(', ');
-    const album = item.album.name;
-    const albumImageUrl = item.album.images[0].url;
-    const songUrl = item.external_urls.spotify;
+    const item = currentlyListening?.item;
+    const isPlaying = currentlyListening?.is_playing;
+    const lastPlayedTrack = lastPlayedTracks?.items[0]?.track;
 
     return {
-      album,
-      albumImageUrl,
-      artist,
       isPlaying,
-      songUrl,
-      title,
+      currentSong: {
+        ...item,
+        artist: item?.artists?.map((_artist) => _artist.name).join(', '),
+      },
+      lastPlayed: {
+        ...lastPlayedTrack,
+        artist: lastPlayedTrack?.artists
+          ?.map((_artist) => _artist.name)
+          .join(', '),
+      },
     };
   } catch (e) {
-    return { isPlaying: false };
+    console.error(e);
+    return { isPlaying: false, lastPlayed: undefined };
   }
 };

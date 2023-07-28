@@ -89,7 +89,11 @@
 
 <section class="w-screen bg-[#ff66ad] py-8 px-4">
   <div class="flex justify-center container w-full">
-    <CurrentlyPlaying currentSong={data} />
+    <CurrentlyPlaying
+      isPlaying={data.isPlaying}
+      currentSong={data.currentSong}
+      lastSong={data.lastPlayed}
+    />
   </div>
 </section>
 
