@@ -4,7 +4,6 @@
   import type { Track } from '@ekwoka/spotify-api';
   import { History } from 'lucide-svelte';
   import { onDestroy, onMount } from 'svelte';
-  import PlaySong from './PlaySong.svelte';
 
   export let currentSong: (Track & { artist: string }) | undefined;
   export let isPlaying: boolean;
@@ -81,9 +80,3 @@
     </div>
   {/if}
 </div>
-
-{#if lastSong}
-  <div class="ml-8 h-[118px] flex items-center">
-    <PlaySong songUrl={currentSong?.preview_url || lastSong.preview_url} />
-  </div>
-{/if}
