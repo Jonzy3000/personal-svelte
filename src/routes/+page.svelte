@@ -80,7 +80,9 @@
         A very simple link shortener built with svelte kit
       </li>
       <li>
-        <a href="https://wengersdoc.com/" target="_blank"> WengersDoc </a>
+        <a href="https://wengers-doc.vercel.app/" target="_blank">
+          WengersDoc
+        </a>
         Website for a friends podcast
       </li>
     </ul>
