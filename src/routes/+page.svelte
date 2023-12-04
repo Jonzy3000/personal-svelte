@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
-  import me from '$lib/assets/me.webp';
+  import me from '$lib/assets/me.webp?enhanced';
   import { Head } from 'svead';
   import { page } from '$app/stores';
 
@@ -25,7 +25,8 @@
         <div
           class="mx-auto left-0 right-0 w-24 -translate-y-[50%] not-prose absolute"
         >
-          <img
+          <enhanced:img
+            fetchpriority="high"
             alt="Matt Jones looking great"
             class="w-24 h-24 border-black border-2 shadow-[5px_0px_black] rounded-full object-cover"
             src={me}
