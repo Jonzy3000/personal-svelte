@@ -56,7 +56,7 @@
         Dalano Barnes' personal website. A port from a previous wordpress site.
       </li>
       <li>
-        <a href="https://parrrot.netlify.app" target="_blank">Parrrot</a>
+        <a href="https://parrot.mattjones.wales/" target="_blank">Parrrot</a>
         A tool to create a spotify playlist from a few songs, using their recommendation
         api
       </li>
