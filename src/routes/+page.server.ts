@@ -1,6 +1,9 @@
 import type { PageServerLoad } from './$types';
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
-import { currentlyPlayingTrack, recentlyPlayedTracks } from '@ekwoka/spotify-api';
+import {
+	currentlyPlayingTrack,
+	recentlyPlayedTracks
+} from '@ekwoka/spotify-api';
 
 export const load: PageServerLoad = async () => {
 	const api = await getAuthenticatedSpotifyApi();
@@ -23,7 +26,9 @@ export const load: PageServerLoad = async () => {
 			},
 			lastPlayed: {
 				...lastPlayedTrack,
-				artist: lastPlayedTrack?.artists?.map((_artist) => _artist.name).join(', ')
+				artist: lastPlayedTrack?.artists
+					?.map((_artist) => _artist.name)
+					.join(', ')
 			}
 		};
 	} catch (e) {

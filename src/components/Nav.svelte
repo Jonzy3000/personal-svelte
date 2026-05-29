@@ -1,4 +1,6 @@
-<nav class="flex justify-center border-b-2 border-black bg-white px-4 uppercase md:px-0">
+<nav
+	class="flex justify-center border-b-2 border-black bg-white px-4 uppercase md:px-0"
+>
 	<div class="container flex w-full flex-row justify-between px-4 py-4">
 		<div class="flex items-center space-x-4">
 			<a class="hover:underline" href="/">Home</a>

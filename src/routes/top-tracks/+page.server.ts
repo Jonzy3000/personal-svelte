@@ -5,7 +5,9 @@ import { dev } from '$app/environment';
 
 export const load: PageServerLoad = async () => {
 	const api = await getAuthenticatedSpotifyApi();
-	const response = await api(getTopItems('tracks', { time_range: 'medium_term' }));
+	const response = await api(
+		getTopItems('tracks', { time_range: 'medium_term' })
+	);
 	return { topTracks: response?.items };
 };
 

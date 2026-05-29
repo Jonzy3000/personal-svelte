@@ -20,9 +20,13 @@
 	<div class="w-screen border-b-2 border-black bg-yellow-300 pt-8">
 		<div class="container">
 			<div class="prose prose-xl">
-				<h1 class="mb-16 w-full">A full stack developer who likes to tinker with things</h1>
+				<h1 class="mb-16 w-full">
+					A full stack developer who likes to tinker with things
+				</h1>
 
-				<div class="not-prose absolute right-0 left-0 mx-auto w-24 -translate-y-[50%]">
+				<div
+					class="not-prose absolute right-0 left-0 mx-auto w-24 -translate-y-[50%]"
+				>
 					<enhanced:img
 						fetchpriority="high"
 						alt="Matt Jones looking great"
@@ -38,14 +42,14 @@
 <section class="w-screen border-b-2 border-black bg-white">
 	<div class="container px-8 py-2 pt-16">
 		<p class="prose-xl">
-			Here's some things I've tinkered with in the past, there's a good chance they are now broken.
-			Most of these projects have come from either wanting to try out new tech, or trying to make my
-			life easier.
+			Here's some things I've tinkered with in the past, there's a good chance
+			they are now broken. Most of these projects have come from either wanting
+			to try out new tech, or trying to make my life easier.
 		</p>
 		<ul class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
 			<li class="list-none rounded-xl border-2 border-black p-4">
-				<a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool to import online recipes
-				into one place
+				<a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool
+				to import online recipes into one place
 			</li>
 			<li>
 				<a href="https://dalanobarnes.com/" target="_blank">dalanobarnes.com</a>
@@ -53,10 +57,13 @@
 			</li>
 			<li>
 				<a href="https://parrot.mattjones.wales/" target="_blank">Parrrot</a>
-				A tool to create a spotify playlist from a few songs, using their recommendation api
+				A tool to create a spotify playlist from a few songs, using their recommendation
+				api
 			</li>
 			<li>
-				<a href="https://fairrent-production.up.railway.app/" target="_blank">Fair rent</a>
+				<a href="https://fairrent-production.up.railway.app/" target="_blank"
+					>Fair rent</a
+				>
 				<p>
 					A tool to calculate a fair rent price between house mates, inspired by
 					<a
