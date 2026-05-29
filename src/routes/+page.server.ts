@@ -28,6 +28,6 @@ export const load: PageServerLoad = async () => {
 		};
 	} catch (e) {
 		console.error(e);
-		return { isPlaying: false, lastPlayed: undefined };
+		return { isPlaying: false, currentSong: undefined, lastPlayed: undefined };
 	}
 };

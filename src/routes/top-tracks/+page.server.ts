@@ -1,5 +1,5 @@
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
 import { getTopItems } from '@ekwoka/spotify-api';
 import { dev } from '$app/environment';
 
