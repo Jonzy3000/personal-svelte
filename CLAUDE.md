@@ -16,7 +16,7 @@ There are no tests.
 
 ## Architecture
 
-Personal website for Matt Jones, built with SvelteKit 4 + TypeScript, deployed to Vercel on the **edge runtime**.
+Personal website for Matt Jones, built with SvelteKit 2 + Svelte 5 + TypeScript, deployed to Vercel on the **edge runtime**. All components use Svelte 5 runes (`$props()`, `$effect`, `$state`).
 
 **Routes:**
 
@@ -26,25 +26,25 @@ Personal website for Matt Jones, built with SvelteKit 4 + TypeScript, deployed t
 **Spotify integration** (`src/lib/server/spotify/spotify.ts`):
 
 - Uses OAuth refresh token flow. On each request, exchanges the refresh token for an access token via `https://accounts.spotify.com/api/token`.
-- The access token is cached in a module-level `global['spotify']` object and reused until it expires.
+- The access token is cached in a `globalThis.spotify` module-level object and reused until it expires.
 - Requires three env vars: `VITE_SPOTIFY_CLIENT_ID`, `VITE_SPOTIFY_CLIENT_SECRET`, `VITE_SPOTIFY_REFRESH_TOKEN`.
-- API calls use the `@ekwoka/spotify-api` client (not `spotify-web-api-node` which is also installed but unused in server code).
+- API calls use the `@ekwoka/spotify-api` client. Uses `btoa()` and `URLSearchParams` (edge-compatible — no Node `Buffer` or `querystring`).
 
 **CurrentlyPlaying component** (`src/components/CurrentlyPlaying.svelte`):
 
 - Polls by calling `invalidateAll()` every 10 seconds to re-run the page's `load` function.
-- Pauses polling when the tab is hidden (`visibilitychange` event on `svelte:document`).
+- Pauses polling when the tab is hidden (`visibilitychange` via `document.addEventListener` inside a `$effect` with cleanup return).
 
 ## Key Conventions
 
 **Path alias:** `$components` resolves to `src/components` (configured in `svelte.config.js`). Use `$lib` for `src/lib` and `$components` for components.
 
-**Styling:** Tailwind CSS v3 with `@tailwindcss/typography` (use `prose` classes for rich text). The `.container` class is a custom override — max-width `2xl`, centered with `px-4` padding at all breakpoints. The default Tailwind container plugin is disabled.
+**Styling:** Tailwind CSS v4 (CSS-based config in `src/app.css`, no `tailwind.config.*` file). Uses `@plugin '@tailwindcss/typography'` for `prose` classes. The `.container` class is a custom `@utility` override — max-width `42rem`, centered with `px-4` padding at all breakpoints.
 
 **Images:** Use `enhanced:img` from `@sveltejs/enhanced-img` for local images (handles format conversion). Import with `?enhanced` query: `import me from '$lib/assets/me.webp?enhanced'`.
 
 **SVGs:** Imported as Svelte components via `@poppanator/sveltekit-svg` (e.g. `import SpotifyLogo from '$lib/assets/spotify-logo.svelte'`).
 
-**SEO:** Use the `<Head>` component from `svead` at the top of each page for `<title>` and meta tags.
+**SEO:** Use the `<Head>` component from `svead` — pass a single `seo_config` prop: `<Head seo_config={{ title, url, description }} />`.
 
-**Icons:** `lucide-svelte` for UI icons.
+**Icons:** Nav uses inline SVGs (lucide-svelte v1 doesn't export `Github`/`Linkedin`). `lucide-svelte` is used in `CurrentlyPlaying` for the `History` icon.
