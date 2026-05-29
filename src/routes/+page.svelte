@@ -56,32 +56,20 @@
         Dalano Barnes' personal website. A port from a previous wordpress site.
       </li>
       <li>
-        <a href="https://parrot.mattjones.wales/" target="_blank">Parrrot</a>
-        A tool to create a spotify playlist from a few songs, using their recommendation
-        api
-      </li>
-      <li>
-        <a href="https://fairrent-production.up.railway.app/" target="_blank"
-          >Fair rent</a
+        <a href="https://llm-usages.mattjones.wales/" target="_blank"
+          >LLM usage</a
         >
-        <p>
-          A tool to calculate a fair rent price between house mates, inspired by
-          <a
-            href="https://www.npr.org/transcripts/688849249"
-            target="_blank"
-            aria-label="Planet money podcast epsiode about the division problem"
-          >
-            this
-          </a> episode of planet money
-        </p>
+        A tool to track LLM usage.
       </li>
       <li>
-        <a href="https://s.mattjones.wales/" target="_blank">Link shortener</a>
-        A very simple link shortener built with svelte kit
+        <a href="https://davandpippa.wedding/" target="_blank"
+          >Dav and pippa's wedding site</a
+        >
+        <p>A fully fledged wedding website, with RSVP capabilities</p>
       </li>
       <li>
-        <a href="https://wengers-doc.vercel.app/" target="_blank">WengersDoc</a>
-        Website for a friends podcast
+        <a href="https://green-steam.co.uk/" target="_blank">Green steam</a>
+        A website to promote the green steam event.
       </li>
     </ul>
   </div>
