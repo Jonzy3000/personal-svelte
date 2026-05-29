@@ -20,15 +20,16 @@ Personal website for Matt Jones, built with SvelteKit 2 + Svelte 5 + TypeScript,
 
 **Routes:**
 
-- `/` — home page with project list and live Spotify "currently playing" widget
-- `/top-tracks` — top Spotify tracks for the past month; rendered statically in production (`csr = false`) so it regenerates on each Vercel function invocation (~12h cache)
+- `/` — home page with project list and live "currently playing" widget
+- `/top-tracks` — top tracks for the past month; rendered statically in production (`csr = false`) so it regenerates on each Vercel function invocation (~12h cache)
 
-**Spotify integration** (`src/lib/server/spotify/spotify.ts`):
+**Music integration** (`src/lib/server/lastfm/lastfm.ts`):
 
-- Uses OAuth refresh token flow. On each request, exchanges the refresh token for an access token via `https://accounts.spotify.com/api/token`.
-- The access token is cached in a `globalThis.spotify` module-level object and reused until it expires.
-- Requires three env vars: `VITE_SPOTIFY_CLIENT_ID`, `VITE_SPOTIFY_CLIENT_SECRET`, `VITE_SPOTIFY_REFRESH_TOKEN`.
-- API calls use the `@ekwoka/spotify-api` client. Uses `btoa()` and `URLSearchParams` (edge-compatible — no Node `Buffer` or `querystring`).
+- Matt listens on TIDAL, which has no queryable now-playing/top-tracks API. A scrobbler logs TIDAL plays to Last.fm, and the site reads Last.fm's API. The widgets are branded with the TIDAL logo since that's where the music is played; Last.fm is just the scrobble store.
+- Last.fm is a single keyed `GET` endpoint (`https://ws.audioscrobbler.com/2.0/`) — no OAuth, no token caching. Plain `fetch`, edge-compatible. Requires two env vars: `VITE_LASTFM_API_KEY`, `VITE_LASTFM_USER`.
+- `getRecentTracks()` — one `user.getrecenttracks` call covers both now-playing and last-played: the most recent track carries `@attr.nowplaying === 'true'` only while something is playing.
+- `getTopTracks()` — `user.gettoptracks` (period `1month`). That endpoint returns a placeholder image for every track, so real album art is fetched per track via `track.getInfo` (cheap because the page is statically regenerated ~12h).
+- Track links point to Last.fm (the API only returns last.fm URLs; no TIDAL track IDs are available).
 
 **CurrentlyPlaying component** (`src/components/CurrentlyPlaying.svelte`):
 
@@ -43,7 +44,7 @@ Personal website for Matt Jones, built with SvelteKit 2 + Svelte 5 + TypeScript,
 
 **Images:** Use `enhanced:img` from `@sveltejs/enhanced-img` for local images (handles format conversion). Import with `?enhanced` query: `import me from '$lib/assets/me.webp?enhanced'`.
 
-**SVGs:** Imported as Svelte components via `@poppanator/sveltekit-svg` (e.g. `import SpotifyLogo from '$lib/assets/spotify-logo.svelte'`).
+**SVGs:** Imported as Svelte components via `@poppanator/sveltekit-svg` (e.g. `import TidalLogo from '$lib/assets/tidal-logo.svelte'`).
 
 **SEO:** Use the `<Head>` component from `svead` — pass a single `seo_config` prop: `<Head seo_config={{ title, url, description }} />`.
 

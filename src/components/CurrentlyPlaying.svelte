@@ -1,7 +1,7 @@
 <script lang="ts">
   import { invalidateAll } from '$app/navigation';
-  import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
-  import type { Track } from '@ekwoka/spotify-api';
+  import TidalLogo from '$lib/assets/tidal-logo.svelte';
+  import type { NormalizedTrack } from '$lib/server/lastfm/lastfm';
   import { History } from 'lucide-svelte';
 
   let {
@@ -9,9 +9,9 @@
     isPlaying,
     lastSong
   }: {
-    currentSong: (Track & { artist: string }) | undefined;
+    currentSong: NormalizedTrack | undefined;
     isPlaying: boolean;
-    lastSong: (Track & { artist: string }) | undefined;
+    lastSong: NormalizedTrack | undefined;
   } = $props();
 
   $effect(() => {
@@ -44,13 +44,13 @@
 >
   <div class="mb-4 flex items-center border-b-2 pb-4">
     <div class="mr-1 flex h-7 w-7 items-center justify-center">
-      <SpotifyLogo />
+      <TidalLogo />
     </div>
 
     <p class="line-clamp-1">
       {#if isPlaying && currentSong}
         <a
-          href={currentSong.external_urls.spotify}
+          href={currentSong.url}
           target="_blank"
           class="font-medium hover:underline"
         >
@@ -68,7 +68,7 @@
       <div class="mr-1"><History size={20} /></div>
       <p class="line-clamp-1">
         <a
-          href={lastSong.external_urls.spotify}
+          href={lastSong.url}
           target="_blank"
           class="font-medium hover:underline"
         >
