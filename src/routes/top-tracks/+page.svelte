@@ -32,10 +32,10 @@
       </a>
     </p>
 
-    <div class="not-prose mb-8 grid gap-y-4 text-xl">
+    <div class="not-prose mb-8 grid gap-y-6 text-xl">
       {#each data.topTracks as track (track.url)}
         <div
-          class="flex h-18 items-center rounded-2xl border-2 border-black bg-white p-6 shadow-[5px_5px_black] duration-200 ease-in-out hover:-rotate-[0.5deg] hover:shadow-none"
+          class="flex items-center rounded-2xl border-2 border-black bg-white p-6 shadow-[5px_5px_black] duration-200 ease-in-out hover:-rotate-[0.5deg] hover:shadow-none"
         >
           <div class="mr-6 aspect-square h-16 w-16">
             <img
