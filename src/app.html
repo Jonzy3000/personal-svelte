@@ -66,11 +66,11 @@
           U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
           U+2212, U+2215, U+FEFF, U+FFFD;
       }
-      html {
-        font-family: 'Archivo', sans-serif;
-      }
+      html,
       body {
         font-family: 'Archivo', sans-serif;
+      }
+      #svelte {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -78,6 +78,6 @@
     </style>
   </head>
   <body data-sveltekit-preload-data="hover">
-    <div style="display: contents">%sveltekit.body%</div>
+    <div id="svelte">%sveltekit.body%</div>
   </body>
 </html>
