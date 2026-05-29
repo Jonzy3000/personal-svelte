@@ -17,7 +17,7 @@
 />
 
 <section>
-  <div class="w-screen border-b-2 border-black bg-yellow-300 pt-8">
+  <div class="border-b-2 border-black bg-yellow-300 pt-8">
     <div class="container">
       <div class="prose prose-xl">
         <h1 class="mb-16 w-full">
@@ -39,7 +39,7 @@
   </div>
 </section>
 
-<section class="w-screen border-b-2 border-black bg-white">
+<section class="border-b-2 border-black bg-white">
   <div class="container px-8 py-2 pt-16">
     <p class="prose-xl">
       Here's some things I've tinkered with in the past, there's a good chance
@@ -87,7 +87,7 @@
   </div>
 </section>
 
-<section class="w-screen bg-[#ff66ad] px-4 py-8">
+<section class="bg-[#ff66ad] px-4 py-8">
   <div class="container flex w-full justify-center">
     <CurrentlyPlaying
       isPlaying={data.isPlaying}
