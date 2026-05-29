@@ -69,8 +69,6 @@
       html,
       body {
         font-family: 'Archivo', sans-serif;
-      }
-      #svelte {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -78,6 +76,6 @@
     </style>
   </head>
   <body data-sveltekit-preload-data="hover">
-    <div id="svelte">%sveltekit.body%</div>
+    <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>
