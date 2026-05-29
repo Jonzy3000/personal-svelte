@@ -40,6 +40,7 @@
     "vite": "^8.0.7"
   },
   "dependencies": {
+    "@icons-pack/svelte-simple-icons": "^6.5.0",
     "lucide-svelte": "^1.0.1",
     "svead": "^0.0.16"
   }
