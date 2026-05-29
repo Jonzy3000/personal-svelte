@@ -4,17 +4,17 @@ import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: vitePreprocess(),
-	compilerOptions: {
-		runes: ({ filename }) =>
-			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
-	},
-	kit: {
-		adapter: adapter({ runtime: 'edge' }),
-		alias: {
-			$components: path.resolve('./src/components')
-		}
-	}
+  preprocess: vitePreprocess(),
+  compilerOptions: {
+    runes: ({ filename }) =>
+      filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+  },
+  kit: {
+    adapter: adapter({ runtime: 'edge' }),
+    alias: {
+      $components: path.resolve('./src/components')
+    }
+  }
 };
 
 export default config;

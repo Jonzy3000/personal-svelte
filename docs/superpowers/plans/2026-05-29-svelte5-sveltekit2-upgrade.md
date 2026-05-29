@@ -138,13 +138,13 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
 
 const config = {
-	preprocess: vitePreprocess(),
-	kit: {
-		adapter: adapter({ runtime: 'edge' }),
-		alias: {
-			$components: path.resolve('./src/components')
-		}
-	}
+  preprocess: vitePreprocess(),
+  kit: {
+    adapter: adapter({ runtime: 'edge' }),
+    alias: {
+      $components: path.resolve('./src/components')
+    }
+  }
 };
 
 export default config;
@@ -160,7 +160,7 @@ import { defineConfig } from 'vite';
 import svg from '@poppanator/sveltekit-svg';
 
 export default defineConfig({
-	plugins: [sveltekit(), svg()]
+  plugins: [sveltekit(), svg()]
 });
 ```
 
@@ -190,27 +190,27 @@ The project has a custom `.container` utility (max-w-2xl, centered, px-4) and us
 @plugin '@tailwindcss/typography';
 
 @utility container {
-	margin-left: auto;
-	margin-right: auto;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  max-width: 100%;
 
-	@media (min-width: 640px) {
-		max-width: 42rem;
-	}
+  @media (min-width: 640px) {
+    max-width: 42rem;
+  }
 
-	@media (min-width: 768px) {
-		max-width: 42rem;
-	}
+  @media (min-width: 768px) {
+    max-width: 42rem;
+  }
 
-	@media (min-width: 1024px) {
-		max-width: 42rem;
-	}
+  @media (min-width: 1024px) {
+    max-width: 42rem;
+  }
 
-	@media (min-width: 1280px) {
-		max-width: 42rem;
-	}
+  @media (min-width: 1280px) {
+    max-width: 42rem;
+  }
 }
 ```
 
@@ -280,16 +280,16 @@ Svelte 5 replaces `<slot />` with `{@render children()}` from `$props()`.
 
 ```svelte
 <script>
-	import Footer from '$components/Footer.svelte';
-	import Nav from '$components/Nav.svelte';
-	import '../app.css';
+  import Footer from '$components/Footer.svelte';
+  import Nav from '$components/Nav.svelte';
+  import '../app.css';
 
-	let { children } = $props();
+  let { children } = $props();
 </script>
 
 <Nav />
 <main class="mx-auto w-full">
-	{@render children()}
+  {@render children()}
 </main>
 <Footer />
 ```
@@ -332,110 +332,110 @@ Expected: starts with `import type { PageServerLoad }` — no changes needed.
 
 ```svelte
 <script lang="ts">
-	import type { PageData } from './$types';
-	import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
-	import me from '$lib/assets/me.webp?enhanced';
-	import { Head } from 'svead';
-	import { page } from '$app/state';
+  import type { PageData } from './$types';
+  import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
+  import me from '$lib/assets/me.webp?enhanced';
+  import { Head } from 'svead';
+  import { page } from '$app/state';
 
-	let { data }: { data: PageData } = $props();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <Head
-	title="Matt Jones | Home"
-	url={page.url.href}
-	description="A full stack developer from wales"
+  title="Matt Jones | Home"
+  url={page.url.href}
+  description="A full stack developer from wales"
 />
 
 <section>
-	<div class="w-screen border-b-2 border-black bg-yellow-300 pt-8">
-		<div class="container">
-			<div class="prose prose-xl">
-				<h1 class="mb-16 w-full">
-					A full stack developer who likes to tinker with things
-				</h1>
+  <div class="w-screen border-b-2 border-black bg-yellow-300 pt-8">
+    <div class="container">
+      <div class="prose prose-xl">
+        <h1 class="mb-16 w-full">
+          A full stack developer who likes to tinker with things
+        </h1>
 
-				<div
-					class="not-prose absolute right-0 left-0 mx-auto w-24 -translate-y-[50%]"
-				>
-					<enhanced:img
-						fetchpriority="high"
-						alt="Matt Jones looking great"
-						class="h-24 w-24 rounded-full border-2 border-black object-cover shadow-[5px_0px_black]"
-						src={me}
-					/>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div
+          class="not-prose absolute right-0 left-0 mx-auto w-24 -translate-y-[50%]"
+        >
+          <enhanced:img
+            fetchpriority="high"
+            alt="Matt Jones looking great"
+            class="h-24 w-24 rounded-full border-2 border-black object-cover shadow-[5px_0px_black]"
+            src={me}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="w-screen border-b-2 border-black bg-white">
-	<div class="container px-8 py-2 pt-16">
-		<p class="prose-xl">
-			Here's some things I've tinkered with in the past, there's a good chance
-			they are now broken. Most of these projects have come from either wanting
-			to try out new tech, or trying to make my life easier.
-		</p>
-		<ul class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-			<li class="list-none rounded-xl border-2 border-black p-4">
-				<a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool
-				to import online recipes into one place
-			</li>
-			<li>
-				<a href="https://dalanobarnes.com/" target="_blank">dalanobarnes.com</a>
-				Dalano Barnes' personal website. A port from a previous wordpress site.
-			</li>
-			<li>
-				<a href="https://parrot.mattjones.wales/" target="_blank">Parrrot</a>
-				A tool to create a spotify playlist from a few songs, using their recommendation
-				api
-			</li>
-			<li>
-				<a href="https://fairrent-production.up.railway.app/" target="_blank"
-					>Fair rent</a
-				>
-				<p>
-					A tool to calculate a fair rent price between house mates, inspired by
-					<a
-						href="https://www.npr.org/transcripts/688849249"
-						target="_blank"
-						aria-label="Planet money podcast epsiode about the division problem"
-					>
-						this
-					</a> episode of planet money
-				</p>
-			</li>
-			<li>
-				<a href="https://s.mattjones.wales/" target="_blank">Link shortener</a>
-				A very simple link shortener built with svelte kit
-			</li>
-			<li>
-				<a href="https://wengers-doc.vercel.app/" target="_blank">WengersDoc</a>
-				Website for a friends podcast
-			</li>
-		</ul>
-	</div>
+  <div class="container px-8 py-2 pt-16">
+    <p class="prose-xl">
+      Here's some things I've tinkered with in the past, there's a good chance
+      they are now broken. Most of these projects have come from either wanting
+      to try out new tech, or trying to make my life easier.
+    </p>
+    <ul class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <li class="list-none rounded-xl border-2 border-black p-4">
+        <a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool
+        to import online recipes into one place
+      </li>
+      <li>
+        <a href="https://dalanobarnes.com/" target="_blank">dalanobarnes.com</a>
+        Dalano Barnes' personal website. A port from a previous wordpress site.
+      </li>
+      <li>
+        <a href="https://parrot.mattjones.wales/" target="_blank">Parrrot</a>
+        A tool to create a spotify playlist from a few songs, using their recommendation
+        api
+      </li>
+      <li>
+        <a href="https://fairrent-production.up.railway.app/" target="_blank"
+          >Fair rent</a
+        >
+        <p>
+          A tool to calculate a fair rent price between house mates, inspired by
+          <a
+            href="https://www.npr.org/transcripts/688849249"
+            target="_blank"
+            aria-label="Planet money podcast epsiode about the division problem"
+          >
+            this
+          </a> episode of planet money
+        </p>
+      </li>
+      <li>
+        <a href="https://s.mattjones.wales/" target="_blank">Link shortener</a>
+        A very simple link shortener built with svelte kit
+      </li>
+      <li>
+        <a href="https://wengers-doc.vercel.app/" target="_blank">WengersDoc</a>
+        Website for a friends podcast
+      </li>
+    </ul>
+  </div>
 </section>
 
 <section class="w-screen bg-[#ff66ad] px-4 py-8">
-	<div class="container flex w-full justify-center">
-		<CurrentlyPlaying
-			isPlaying={data.isPlaying}
-			currentSong={data.currentSong}
-			lastSong={data.lastPlayed}
-		/>
-	</div>
+  <div class="container flex w-full justify-center">
+    <CurrentlyPlaying
+      isPlaying={data.isPlaying}
+      currentSong={data.currentSong}
+      lastSong={data.lastPlayed}
+    />
+  </div>
 </section>
 
 <style>
-	li {
-		@apply flex list-none flex-col rounded-xl border-2 border-black p-4 text-lg md:min-h-[150px];
-	}
+  li {
+    @apply flex list-none flex-col rounded-xl border-2 border-black p-4 text-lg md:min-h-[150px];
+  }
 
-	li > a:first-child {
-		@apply text-lg font-bold uppercase underline;
-	}
+  li > a:first-child {
+    @apply text-lg font-bold uppercase underline;
+  }
 </style>
 ```
 
@@ -475,65 +475,65 @@ Expected: starts with `import { getAuthenticatedSpotifyApi }` — no changes nee
 
 ```svelte
 <script lang="ts">
-	import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
-	import { Head } from 'svead';
-	import type { PageData } from './$types';
-	import { page } from '$app/state';
+  import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
+  import { Head } from 'svead';
+  import type { PageData } from './$types';
+  import { page } from '$app/state';
 
-	let { data }: { data: PageData } = $props();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <Head
-	title="Matt Jones | Top Tracks"
-	url={page.url.href}
-	description="Matt Jones' most listened to tracks"
+  title="Matt Jones | Top Tracks"
+  url={page.url.href}
+  description="Matt Jones' most listened to tracks"
 />
 
 <section class="w-full bg-[#00e3ff] py-8">
-	<div class="container prose prose-lg">
-		<h1 class="mb-4 flex items-center justify-center">
-			<div class="h-12 w-12">
-				<SpotifyLogo />
-			</div>
-			Top Tracks
-		</h1>
-		<p class="prose-2xl mt-0">
-			Here's what I've been listening to over the past month or so, more info <a
-				href="https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks"
-				target="_blank"
-			>
-				here.
-			</a>
-		</p>
+  <div class="container prose prose-lg">
+    <h1 class="mb-4 flex items-center justify-center">
+      <div class="h-12 w-12">
+        <SpotifyLogo />
+      </div>
+      Top Tracks
+    </h1>
+    <p class="prose-2xl mt-0">
+      Here's what I've been listening to over the past month or so, more info <a
+        href="https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks"
+        target="_blank"
+      >
+        here.
+      </a>
+    </p>
 
-		<div class="not-prose mb-8 grid gap-y-4 text-xl">
-			{#each data.topTracks as track}
-				<div
-					class="flex h-18 items-center rounded-2xl border-2 border-black bg-white p-6 shadow-[5px_5px_black] duration-200 ease-in-out hover:-rotate-[0.5deg] hover:shadow-none"
-				>
-					<div class="mr-6 aspect-square h-16 w-16">
-						<img
-							class="object-fit h-full w-full rounded-full border-2 border-black"
-							src={track.album.images[1]?.url}
-							alt="album cover"
-						/>
-					</div>
-					<div class="flex flex-col">
-						<a
-							href={track.external_urls.spotify}
-							target="_blank"
-							class="line-clamp-1 font-medium hover:underline"
-						>
-							{track.name}
-						</a>
-						<div class="line-clamp-2 text-ellipsis text-gray-500">
-							{track.artists.map((a) => a.name).join(', ')}
-						</div>
-					</div>
-				</div>
-			{/each}
-		</div>
-	</div>
+    <div class="not-prose mb-8 grid gap-y-4 text-xl">
+      {#each data.topTracks as track}
+        <div
+          class="flex h-18 items-center rounded-2xl border-2 border-black bg-white p-6 shadow-[5px_5px_black] duration-200 ease-in-out hover:-rotate-[0.5deg] hover:shadow-none"
+        >
+          <div class="mr-6 aspect-square h-16 w-16">
+            <img
+              class="object-fit h-full w-full rounded-full border-2 border-black"
+              src={track.album.images[1]?.url}
+              alt="album cover"
+            />
+          </div>
+          <div class="flex flex-col">
+            <a
+              href={track.external_urls.spotify}
+              target="_blank"
+              class="line-clamp-1 font-medium hover:underline"
+            >
+              {track.name}
+            </a>
+            <div class="line-clamp-2 text-ellipsis text-gray-500">
+              {track.artists.map((a) => a.name).join(', ')}
+            </div>
+          </div>
+        </div>
+      {/each}
+    </div>
+  </div>
 </section>
 ```
 
@@ -566,86 +566,86 @@ git commit -m "feat: rewrite top-tracks page to Svelte 5 runes"
 
 ```svelte
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation';
-	import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
-	import type { Track } from '@ekwoka/spotify-api';
-	import { History } from 'lucide-svelte';
+  import { invalidateAll } from '$app/navigation';
+  import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
+  import type { Track } from '@ekwoka/spotify-api';
+  import { History } from 'lucide-svelte';
 
-	let {
-		currentSong,
-		isPlaying,
-		lastSong
-	}: {
-		currentSong: (Track & { artist: string }) | undefined;
-		isPlaying: boolean;
-		lastSong: (Track & { artist: string }) | undefined;
-	} = $props();
+  let {
+    currentSong,
+    isPlaying,
+    lastSong
+  }: {
+    currentSong: (Track & { artist: string }) | undefined;
+    isPlaying: boolean;
+    lastSong: (Track & { artist: string }) | undefined;
+  } = $props();
 
-	$effect(() => {
-		let interval: ReturnType<typeof setInterval>;
+  $effect(() => {
+    let interval: ReturnType<typeof setInterval>;
 
-		const start = () => {
-			interval = setInterval(() => invalidateAll(), 10000);
-		};
+    const start = () => {
+      interval = setInterval(() => invalidateAll(), 10000);
+    };
 
-		const handleVisibilityChange = () => {
-			clearInterval(interval);
-			if (!document.hidden) {
-				invalidateAll();
-				start();
-			}
-		};
+    const handleVisibilityChange = () => {
+      clearInterval(interval);
+      if (!document.hidden) {
+        invalidateAll();
+        start();
+      }
+    };
 
-		start();
-		document.addEventListener('visibilitychange', handleVisibilityChange);
+    start();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
-		return () => {
-			clearInterval(interval);
-			document.removeEventListener('visibilitychange', handleVisibilityChange);
-		};
-	});
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  });
 </script>
 
 <div
-	class="flex w-full max-w-md flex-col items-center rounded border-2 border-black bg-white p-4 sm:w-auto"
+  class="flex w-full max-w-md flex-col items-center rounded border-2 border-black bg-white p-4 sm:w-auto"
 >
-	<div class="mb-4 flex items-center border-b-2 pb-4">
-		<div class="mr-1 flex h-7 w-7 items-center justify-center">
-			<SpotifyLogo />
-		</div>
+  <div class="mb-4 flex items-center border-b-2 pb-4">
+    <div class="mr-1 flex h-7 w-7 items-center justify-center">
+      <SpotifyLogo />
+    </div>
 
-		<p class="line-clamp-1">
-			{#if isPlaying && currentSong}
-				<a
-					href={currentSong.external_urls.spotify}
-					target="_blank"
-					class="font-medium hover:underline"
-				>
-					{currentSong.name}
-				</a>
-				{' - '}
-				<span class="text-stone-600">{currentSong.artist}</span>
-			{:else}
-				Not currently jamming to any tunes
-			{/if}
-		</p>
-	</div>
-	{#if lastSong}
-		<div class="flex items-center text-sm">
-			<div class="mr-1"><History size={20} /></div>
-			<p class="line-clamp-1">
-				<a
-					href={lastSong.external_urls.spotify}
-					target="_blank"
-					class="font-medium hover:underline"
-				>
-					{lastSong.name}
-				</a>
-				{' - '}
-				<span class="text-stone-600">{lastSong.artist}</span>
-			</p>
-		</div>
-	{/if}
+    <p class="line-clamp-1">
+      {#if isPlaying && currentSong}
+        <a
+          href={currentSong.external_urls.spotify}
+          target="_blank"
+          class="font-medium hover:underline"
+        >
+          {currentSong.name}
+        </a>
+        {' - '}
+        <span class="text-stone-600">{currentSong.artist}</span>
+      {:else}
+        Not currently jamming to any tunes
+      {/if}
+    </p>
+  </div>
+  {#if lastSong}
+    <div class="flex items-center text-sm">
+      <div class="mr-1"><History size={20} /></div>
+      <p class="line-clamp-1">
+        <a
+          href={lastSong.external_urls.spotify}
+          target="_blank"
+          class="font-medium hover:underline"
+        >
+          {lastSong.name}
+        </a>
+        {' - '}
+        <span class="text-stone-600">{lastSong.artist}</span>
+      </p>
+    </div>
+  {/if}
 </div>
 ```
 
