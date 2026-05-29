@@ -1,5 +1,5 @@
-const API_KEY = import.meta.env.VITE_LASTFM_API_KEY as string;
-const USER = import.meta.env.VITE_LASTFM_USER as string;
+import { LASTFM_API_KEY, LASTFM_USER } from '$env/static/private';
+
 const API_ROOT = 'https://ws.audioscrobbler.com/2.0/';
 
 export type NormalizedTrack = {
@@ -40,20 +40,26 @@ async function lastfmFetch<T>(
 ): Promise<T> {
   const query = new URLSearchParams({
     method,
-    user: USER,
-    api_key: API_KEY,
+    user: LASTFM_USER,
+    api_key: LASTFM_API_KEY,
     format: 'json',
     ...params
   });
+  try {
+    const response = await fetch(`${API_ROOT}?${query}`);
+    const json = await response.json();
 
-  const response = await fetch(`${API_ROOT}?${query}`);
-  const json = await response.json();
+    if (json.error) {
+      console.error('Error fetching json from lastfm');
+      throw new Error(`Last.fm error ${json.error}: ${json.message}`);
+    }
 
-  if (json.error) {
-    throw new Error(`Last.fm error ${json.error}: ${json.message}`);
+    console.log(`Success for lastfm ${method}`);
+    return json as T;
+  } catch (e) {
+    console.error(`Error fetching lastfm ${method}: ${e}`);
+    throw e;
   }
-
-  return json as T;
 }
 
 /** Last.fm often returns blank track images; treat empty strings as missing. */
