@@ -8,9 +8,11 @@
 </script>
 
 <Head
-	title="Matt Jones | Top Tracks"
-	url={page.url.href}
-	description="Matt Jones' most listened to tracks"
+	seo_config={{
+		title: 'Matt Jones | Top Tracks',
+		url: page.url.href,
+		description: "Matt Jones' most listened to tracks"
+	}}
 />
 
 <section class="w-full py-8 bg-[#00e3ff]">

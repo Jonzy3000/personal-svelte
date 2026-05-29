@@ -9,9 +9,11 @@
 </script>
 
 <Head
-	title="Matt Jones | Home"
-	url={page.url.href}
-	description="A full stack developer from wales"
+	seo_config={{
+		title: 'Matt Jones | Home',
+		url: page.url.href,
+		description: 'A full stack developer from wales'
+	}}
 />
 
 <section>
