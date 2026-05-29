@@ -3,47 +3,47 @@
   import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
   import type { Track } from '@ekwoka/spotify-api';
   import { History } from 'lucide-svelte';
-  import { onDestroy, onMount } from 'svelte';
 
-  export let currentSong: (Track & { artist: string }) | undefined;
-  export let isPlaying: boolean;
-  export let lastSong: (Track & { artist: string }) | undefined;
+  let {
+    currentSong,
+    isPlaying,
+    lastSong
+  }: {
+    currentSong: (Track & { artist: string }) | undefined;
+    isPlaying: boolean;
+    lastSong: (Track & { artist: string }) | undefined;
+  } = $props();
 
-  let songInterval: number;
+  $effect(() => {
+    let interval: ReturnType<typeof setInterval>;
 
-  onMount(async () => {
-    setupInterval();
+    const start = () => {
+      interval = setInterval(() => invalidateAll(), 10000);
+    };
+
+    const handleVisibilityChange = () => {
+      clearInterval(interval);
+      if (!document.hidden) {
+        invalidateAll();
+        start();
+      }
+    };
+
+    start();
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   });
-
-  const setupInterval = () => {
-    songInterval = setInterval(() => {
-      // Super hacky, but will call the load function again of this page to get updated song
-      // Other option would be to use a +server.js for current-song
-      invalidateAll();
-    }, 10000);
-  };
-
-  onDestroy(() => {
-    clearInterval(songInterval);
-  });
-
-  const handleVisiblityChange = () => {
-    if (document.hidden) {
-      clearInterval(songInterval);
-    } else {
-      invalidateAll();
-      setupInterval();
-    }
-  };
 </script>
 
-<svelte:document on:visibilitychange={handleVisiblityChange} />
-
 <div
-  class="flex flex-col items-center bg-white p-4 border-2 border-black rounded w-full max-w-md sm:w-auto"
+  class="flex w-full max-w-md flex-col items-center rounded border-2 border-black bg-white p-4 sm:w-auto"
 >
-  <div class="flex items-center border-b-2 pb-4 mb-4">
-    <div class="h-7 w-7 flex justify-center items-center mr-1">
+  <div class="mb-4 flex items-center border-b-2 pb-4">
+    <div class="mr-1 flex h-7 w-7 items-center justify-center">
       <SpotifyLogo />
     </div>
 
@@ -56,7 +56,7 @@
         >
           {currentSong.name}
         </a>
-        {' - '}
+        -
         <span class="text-stone-600">{currentSong.artist}</span>
       {:else}
         Not currently jamming to any tunes
@@ -64,7 +64,7 @@
     </p>
   </div>
   {#if lastSong}
-    <div class="flex text-sm items-center">
+    <div class="flex items-center text-sm">
       <div class="mr-1"><History size={20} /></div>
       <p class="line-clamp-1">
         <a
@@ -74,7 +74,7 @@
         >
           {lastSong.name}
         </a>
-        {' - '}
+        -
         <span class="text-stone-600">{lastSong.artist}</span>
       </p>
     </div>

@@ -1,14 +1,16 @@
-.DS_Store
+# Package manager
 node_modules
-/build
-/.svelte-kit
-/package
+package-lock.json
+
+# Build outputs
+build
+.svelte-kit
+.vercel
+
+# Environment files
 .env
 .env.*
 !.env.example
 
-# Ignore files for PNPM, NPM and YARN
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
-/.vercel
+# Static assets that shouldn't be formatted
+/static

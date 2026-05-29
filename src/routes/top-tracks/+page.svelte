@@ -2,19 +2,22 @@
   import SpotifyLogo from '$lib/assets/spotify-logo.svelte';
   import { Head } from 'svead';
   import type { PageData } from './$types';
-  import { page } from '$app/stores';
-  export let data: PageData;
+  import { page } from '$app/state';
+
+  let { data }: { data: PageData } = $props();
 </script>
 
 <Head
-  title="Matt Jones | Top Tracks"
-  url={$page.url.href}
-  description="Matt Jones' most listened to tracks"
+  seo_config={{
+    title: 'Matt Jones | Top Tracks',
+    url: page.url.href,
+    description: "Matt Jones' most listened to tracks"
+  }}
 />
 
-<section class="w-full py-8 bg-[#00e3ff]">
-  <div class=" container prose prose-lg">
-    <h1 class="items-center justify-center flex mb-4">
+<section class="w-full bg-[#00e3ff] py-8">
+  <div class="container prose prose-lg">
+    <h1 class="mb-4 flex items-center justify-center">
       <div class="h-12 w-12">
         <SpotifyLogo />
       </div>
@@ -29,14 +32,14 @@
       </a>
     </p>
 
-    <div class="grid gap-y-4 mb-8 not-prose text-xl">
-      {#each data.topTracks as track}
+    <div class="not-prose mb-8 grid gap-y-4 text-xl">
+      {#each data.topTracks as track (track.id)}
         <div
-          class="flex items-center h-18 p-6 rounded-2xl bg-white border-2 border-black duration-200 ease-in-out hover:shadow-none shadow-[5px_5px_black] hover:-rotate-[0.5deg]"
+          class="flex h-18 items-center rounded-2xl border-2 border-black bg-white p-6 shadow-[5px_5px_black] duration-200 ease-in-out hover:-rotate-[0.5deg] hover:shadow-none"
         >
-          <div class="h-16 w-16 mr-6 aspect-square">
+          <div class="mr-6 aspect-square h-16 w-16">
             <img
-              class="object-fit border-2 border-black rounded-full w-full h-full"
+              class="object-fit h-full w-full rounded-full border-2 border-black"
               src={track.album.images[1]?.url}
               alt="album cover"
             />
@@ -45,11 +48,11 @@
             <a
               href={track.external_urls.spotify}
               target="_blank"
-              class="font-medium hover:underline line-clamp-1"
+              class="line-clamp-1 font-medium hover:underline"
             >
               {track.name}
             </a>
-            <div class="text-gray-500 text-ellipsis line-clamp-2">
+            <div class="line-clamp-2 text-ellipsis text-gray-500">
               {track.artists.map((a) => a.name).join(', ')}
             </div>
           </div>

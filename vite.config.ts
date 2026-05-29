@@ -1,16 +1,12 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { type UserConfig } from 'vite';
-import svelteSVG from '@poppanator/sveltekit-svg';
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import svg from '@poppanator/sveltekit-svg';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 
-const config: UserConfig = {
-  optimizeDeps: {
-    include: ['classnames'],
-  },
-  plugins: [enhancedImages(), sveltekit(), svelteSVG()],
+export default defineConfig({
+  plugins: [enhancedImages(), sveltekit(), tailwindcss(), svg()],
   ssr: {
-    noExternal: ['svelte-hero-icons', 'flowbite-svelte', '@ekwoka/spotify-api'],
-  },
-};
-
-export default config;
+    noExternal: ['@ekwoka/spotify-api']
+  }
+});

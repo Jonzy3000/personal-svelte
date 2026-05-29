@@ -1,22 +1,20 @@
 import adapter from '@sveltejs/adapter-vercel';
-import preprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: [
-    preprocess({
-      postcss: true,
-    }),
-  ],
+  preprocess: vitePreprocess(),
+  compilerOptions: {
+    runes: ({ filename }) =>
+      filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+  },
   kit: {
     adapter: adapter({ runtime: 'edge' }),
     alias: {
-      $components: path.resolve('./src/components'),
-    },
-  },
+      $components: path.resolve('./src/components')
+    }
+  }
 };
 
 export default config;

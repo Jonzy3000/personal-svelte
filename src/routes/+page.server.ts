@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types';
 import { getAuthenticatedSpotifyApi } from '$lib/server/spotify/spotify';
 import {
   currentlyPlayingTrack,
-  recentlyPlayedTracks,
+  recentlyPlayedTracks
 } from '@ekwoka/spotify-api';
 
 export const load: PageServerLoad = async () => {
@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
   try {
     const [currentlyListening, lastPlayedTracks] = await Promise.all([
       api(currentlyPlayingTrack()),
-      api(recentlyPlayedTracks({ limit: 1 })),
+      api(recentlyPlayedTracks({ limit: 1 }))
     ]);
 
     const item = currentlyListening?.item;
@@ -22,17 +22,17 @@ export const load: PageServerLoad = async () => {
       isPlaying,
       currentSong: {
         ...item,
-        artist: item?.artists?.map((_artist) => _artist.name).join(', '),
+        artist: item?.artists?.map((_artist) => _artist.name).join(', ')
       },
       lastPlayed: {
         ...lastPlayedTrack,
         artist: lastPlayedTrack?.artists
           ?.map((_artist) => _artist.name)
-          .join(', '),
-      },
+          .join(', ')
+      }
     };
   } catch (e) {
     console.error(e);
-    return { isPlaying: false, lastPlayed: undefined };
+    return { isPlaying: false, currentSong: undefined, lastPlayed: undefined };
   }
 };
