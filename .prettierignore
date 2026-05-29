@@ -1,9 +1,16 @@
-# Package Managers
+# Package manager
+node_modules
 package-lock.json
-pnpm-lock.yaml
-yarn.lock
-bun.lock
-bun.lockb
 
-# Miscellaneous
-/static/
+# Build outputs
+build
+.svelte-kit
+.vercel
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Static assets that shouldn't be formatted
+/static
