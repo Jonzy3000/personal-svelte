@@ -6,8 +6,7 @@ import path from 'path';
 const config = {
 	preprocess: vitePreprocess(),
 	compilerOptions: {
-		runes: ({ filename }) =>
-			filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+		runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
 	},
 	kit: {
 		adapter: adapter({ runtime: 'edge' }),

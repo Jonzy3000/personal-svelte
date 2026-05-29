@@ -19,16 +19,19 @@ There are no tests.
 Personal website for Matt Jones, built with SvelteKit 4 + TypeScript, deployed to Vercel on the **edge runtime**.
 
 **Routes:**
+
 - `/` — home page with project list and live Spotify "currently playing" widget
 - `/top-tracks` — top Spotify tracks for the past month; rendered statically in production (`csr = false`) so it regenerates on each Vercel function invocation (~12h cache)
 
 **Spotify integration** (`src/lib/server/spotify/spotify.ts`):
+
 - Uses OAuth refresh token flow. On each request, exchanges the refresh token for an access token via `https://accounts.spotify.com/api/token`.
 - The access token is cached in a module-level `global['spotify']` object and reused until it expires.
 - Requires three env vars: `VITE_SPOTIFY_CLIENT_ID`, `VITE_SPOTIFY_CLIENT_SECRET`, `VITE_SPOTIFY_REFRESH_TOKEN`.
 - API calls use the `@ekwoka/spotify-api` client (not `spotify-web-api-node` which is also installed but unused in server code).
 
 **CurrentlyPlaying component** (`src/components/CurrentlyPlaying.svelte`):
+
 - Polls by calling `invalidateAll()` every 10 seconds to re-run the page's `load` function.
 - Pauses polling when the tab is hidden (`visibilitychange` event on `svelte:document`).
 

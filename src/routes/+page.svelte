@@ -17,20 +17,16 @@
 />
 
 <section>
-	<div class="w-screen border-b-2 border-black pt-8 bg-yellow-300">
+	<div class="w-screen border-b-2 border-black bg-yellow-300 pt-8">
 		<div class="container">
 			<div class="prose prose-xl">
-				<h1 class="w-full mb-16">
-					A full stack developer who likes to tinker with things
-				</h1>
+				<h1 class="mb-16 w-full">A full stack developer who likes to tinker with things</h1>
 
-				<div
-					class="mx-auto left-0 right-0 w-24 -translate-y-[50%] not-prose absolute"
-				>
+				<div class="not-prose absolute right-0 left-0 mx-auto w-24 -translate-y-[50%]">
 					<enhanced:img
 						fetchpriority="high"
 						alt="Matt Jones looking great"
-						class="w-24 h-24 border-black border-2 shadow-[5px_0px_black] rounded-full object-cover"
+						class="h-24 w-24 rounded-full border-2 border-black object-cover shadow-[5px_0px_black]"
 						src={me}
 					/>
 				</div>
@@ -39,17 +35,17 @@
 	</div>
 </section>
 
-<section class="w-screen bg-white border-b-2 border-black">
-	<div class="pt-16 px-8 py-2 container">
+<section class="w-screen border-b-2 border-black bg-white">
+	<div class="container px-8 py-2 pt-16">
 		<p class="prose-xl">
-			Here's some things I've tinkered with in the past, there's a good chance
-			they are now broken. Most of these projects have come from either wanting
-			to try out new tech, or trying to make my life easier.
+			Here's some things I've tinkered with in the past, there's a good chance they are now broken.
+			Most of these projects have come from either wanting to try out new tech, or trying to make my
+			life easier.
 		</p>
-		<ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
-			<li class="border-2 border-black p-4 rounded-xl list-none">
-				<a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool
-				to import online recipes into one place
+		<ul class="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+			<li class="list-none rounded-xl border-2 border-black p-4">
+				<a href="https://pantry.mattjones.wales" target="_blank">Pantry</a> A tool to import online recipes
+				into one place
 			</li>
 			<li>
 				<a href="https://dalanobarnes.com/" target="_blank">dalanobarnes.com</a>
@@ -84,8 +80,8 @@
 	</div>
 </section>
 
-<section class="w-screen bg-[#ff66ad] py-8 px-4">
-	<div class="flex justify-center container w-full">
+<section class="w-screen bg-[#ff66ad] px-4 py-8">
+	<div class="container flex w-full justify-center">
 		<CurrentlyPlaying
 			isPlaying={data.isPlaying}
 			currentSong={data.currentSong}
@@ -96,10 +92,28 @@
 
 <style>
 	li {
-		@apply border-2 border-black p-4 rounded-xl list-none flex flex-col text-lg md:min-h-[150px];
+		display: flex;
+		list-style: none;
+		flex-direction: column;
+		border-radius: 0.75rem;
+		border-width: 2px;
+		border-color: black;
+		padding: 1rem;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+
+	@media (min-width: 768px) {
+		li {
+			min-height: 150px;
+		}
 	}
 
 	li > a:first-child {
-		@apply font-bold underline uppercase text-lg;
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-decoration: underline;
 	}
 </style>

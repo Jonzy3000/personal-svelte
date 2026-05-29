@@ -7,7 +7,7 @@
 </script>
 
 <Nav />
-<main class="w-full mx-auto">
+<main class="mx-auto w-full">
 	{@render children()}
 </main>
 <Footer />
