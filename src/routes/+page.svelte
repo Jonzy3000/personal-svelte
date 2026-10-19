@@ -52,8 +52,8 @@
         to import online recipes into one place
       </li>
       <li>
-        <a href="https://dalanobarnes.com/" target="_blank">dalanobarnes.com</a>
-        Dalano Barnes' personal website. A port from a previous wordpress site.
+        <a href="https://cultfulfilms.com/" target="_blank">cultfulfilms.com</a>
+        Website for Cultful Films, an independent film studio.
       </li>
       <li>
         <a href="https://llm-usages.mattjones.wales/" target="_blank"
