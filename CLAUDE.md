@@ -21,7 +21,7 @@ Personal website for Matt Jones, built with SvelteKit 3 + Svelte 5 + TypeScript,
 **Routes:**
 
 - `/` — home page with project list and live "currently playing" widget
-- `/top-tracks` — top tracks for the past month; rendered statically in production (`csr = false`) so it regenerates on each Vercel function invocation (~12h cache)
+- `/top-tracks` — top tracks for the past month; cached with Vercel ISR (`config.isr`, 12h expiration) and served without client JS in production (`csr = false`). ISR needs the Node runtime, which is why it was dropped while the site ran on edge
 
 **Music integration** (`src/lib/server/lastfm/lastfm.ts`):
 
