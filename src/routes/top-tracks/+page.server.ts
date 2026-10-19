@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
-import { getTopTracks } from '$lib/server/lastfm/lastfm';
-import { dev } from '$app/environment';
+import { getTopTracks } from '#lib/server/lastfm/lastfm.js';
+import { dev } from '$app/env';
 
 export const load: PageServerLoad = async () => {
   const topTracks = await getTopTracks();

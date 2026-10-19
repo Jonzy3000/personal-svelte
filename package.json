@@ -17,9 +17,10 @@
     "@eslint/compat": "^2.0.4",
     "@eslint/js": "^10.0.1",
     "@poppanator/sveltekit-svg": "^7.0.0",
-    "@sveltejs/adapter-vercel": "^5.10.3",
-    "@sveltejs/enhanced-img": "^0.10.4",
-    "@sveltejs/kit": "^2.57.0",
+    "@sveltejs/adapter-vercel": "^7.0.0",
+    "@sveltejs/enhanced-img": "^1.0.0",
+    "@sveltejs/kit": "^3.0.0",
+    "@sveltejs/load-config": "^0.2.2",
     "@sveltejs/vite-plugin-svelte": "^7.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
@@ -31,15 +32,22 @@
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "svelte": "^5.55.2",
-    "svelte-check": "^4.4.6",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.5",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
-    "vite": "^8.0.7"
+    "vite": "^8.0.12"
   },
   "dependencies": {
     "lucide-svelte": "^1.0.1",
     "svead": "^0.0.16"
+  },
+  "imports": {
+    "#lib/*": "./src/lib/*",
+    "#components/*": "./src/components/*"
+  },
+  "engines": {
+    "node": ">=22.17"
   }
 }

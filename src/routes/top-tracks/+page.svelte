@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TidalLogo from '$lib/assets/tidal-logo.svelte';
+  import TidalLogo from '#lib/assets/tidal-logo.svelte';
   import { Head } from 'svead';
   import type { PageData } from './$types';
   import { page } from '$app/state';

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { invalidateAll } from '$app/navigation';
-  import TidalLogo from '$lib/assets/tidal-logo.svelte';
-  import type { NormalizedTrack } from '$lib/server/lastfm/lastfm';
+  import { refreshAll } from '$app/navigation';
+  import TidalLogo from '#lib/assets/tidal-logo.svelte';
+  import type { NormalizedTrack } from '#lib/server/lastfm/lastfm.js';
   import { History } from 'lucide-svelte';
 
   let {
@@ -18,13 +18,13 @@
     let interval: ReturnType<typeof setInterval>;
 
     const start = () => {
-      interval = setInterval(() => invalidateAll(), 10000);
+      interval = setInterval(() => refreshAll(), 10000);
     };
 
     const handleVisibilityChange = () => {
       clearInterval(interval);
       if (!document.hidden) {
-        invalidateAll();
+        refreshAll();
         start();
       }
     };

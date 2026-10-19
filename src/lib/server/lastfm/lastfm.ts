@@ -1,4 +1,4 @@
-import { LASTFM_API_KEY, LASTFM_USER } from '$env/static/private';
+import { LASTFM_API_KEY, LASTFM_USER } from '$app/env/private';
 
 const API_ROOT = 'https://ws.audioscrobbler.com/2.0/';
 

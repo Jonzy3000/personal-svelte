@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getRecentTracks } from '$lib/server/lastfm/lastfm';
+import { getRecentTracks } from '#lib/server/lastfm/lastfm.js';
 
 export const load: PageServerLoad = async () => {
   try {

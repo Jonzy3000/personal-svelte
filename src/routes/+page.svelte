@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import CurrentlyPlaying from '$components/CurrentlyPlaying.svelte';
-  import me from '$lib/assets/me.webp?enhanced';
+  import CurrentlyPlaying from '#components/CurrentlyPlaying.svelte';
+  import me from '#lib/assets/me.webp?enhanced';
   import { Head } from 'svead';
   import { page } from '$app/state';
 
